@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CP Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      background: #020617;
+      color: #e5e7eb;
+      overflow: hidden;
+    }
+
+    canvas#stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 18px 28px;
+      font-size: 20px;
+      font-weight: 600;
+      border-bottom: 1px solid #1e293b;
+      background: rgba(2,6,23,0.7);
+      backdrop-filter: blur(8px);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(15,23,42,0.85);
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 18px;
+      width: fit-content;
+    }
+
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #93c5fd;
+    }
+
+    /* Heatmap grid */
+    .heatmap {
+      display: grid;
+      grid-template-columns: repeat(53, 12px);
+      grid-template-rows: repeat(7, 12px);
+      gap: 3px;
+    }
+
+    .day {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: #1e293b; /* default dark */
+    }
+
+    .lvl-1 { background: #14532d; }
+    .lvl-2 { background: #166534; }
+    .lvl-3 { background: #22c55e; }
+    .lvl-4 { background: #4ade80; }
+  </style>
+</head>
+
+<body>
+  <canvas id="stars"></canvas>
+
+  <header>🌌 Competitive Programming Streak Dashboard</header>
+
+  <div class="container">
+    <div class="card">
+      <h2>LeetCode Submission Streak</h2>
+      <div id="lc-heatmap" class="heatmap"></div>
+    </div>
+
+    <div class="card">
+      <h2>Codeforces Submission Streak</h2>
+      <div id="cf-heatmap" class="heatmap"></div>
+    </div>
+
+    <div class="card">
+      <h2>GitHub Contributions</h2>
+      <object 
+          type="image/svg+xml" 
+          data="https://github.com/users/archangel2006/contributions" 
+          style="width: 700px; height: 110px; display: block;">
+      </object>
+    </div>
+  </div>
+
+  <script type="module" src="renderer.js"></script>
+</body>
+</html>
